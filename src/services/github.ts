@@ -76,7 +76,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     cache: 'force-cache',
     headers: {
       accept: 'application/vnd.github.full+json',
-      authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      authorization: `Bearer ${process.env.GH_API_TOKEN}`,
       'x-github-api-version': '2022-11-28',
     },
   });
