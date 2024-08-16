@@ -1,12 +1,12 @@
 import { DocumentProps, Head, Html, Main, NextScript } from 'next/document';
 
 export default function Document(props: DocumentProps) {
-  const title = props.__NEXT_DATA__.props?.pageProps?.post?.title || 'Bob Lauer - Home';
+  const title = props.__NEXT_DATA__.props?.pageProps?.post?.title || 'My Blog';
 
   return (
     <Html lang='en'>
       <Head>
-        <title>{title}</title>
+        <title>{title + ' | Bob Lauer'}</title>
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <body className='p-4 m-4 w-full flex flex-col items-center'>
