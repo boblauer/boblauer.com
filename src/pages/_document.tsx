@@ -1,9 +1,12 @@
-import { Head, Html, Main, NextScript } from 'next/document';
+import { DocumentProps, Head, Html, Main, NextScript } from 'next/document';
 
-export default function Document() {
+export default function Document(props: DocumentProps) {
+  const title = props.__NEXT_DATA__.props?.pageProps?.post?.title || 'Bob Lauer - Home';
+
   return (
     <Html lang='en'>
       <Head>
+        <title>{title}</title>
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <body className='p-4 m-4 w-full flex flex-col items-center'>
