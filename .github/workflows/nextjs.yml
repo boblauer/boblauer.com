@@ -9,6 +9,9 @@ on:
   push:
     branches: ["main"]
 
+  issues:
+    types: ["opened", "edited", "deleted"]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
