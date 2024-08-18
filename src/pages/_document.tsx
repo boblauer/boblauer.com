@@ -6,6 +6,18 @@ export default function Document(props: DocumentProps) {
   return (
     <Html lang='en'>
       <Head>
+        <script async src='https://www.googletagmanager.com/gtag/js?id=G-FWWMJV2MRE'></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-FWWMJV2MRE');
+            `,
+          }}
+        ></script>
         <title>{title + ' | Bob Lauer'}</title>
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
