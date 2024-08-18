@@ -24,3 +24,7 @@
 html {
   background-color: rgb(249, 249, 249);
 }
+
+* {
+  box-sizing: border-box;
+}

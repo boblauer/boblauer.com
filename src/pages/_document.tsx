@@ -9,9 +9,9 @@ export default function Document(props: DocumentProps) {
         <title>{title + ' | Bob Lauer'}</title>
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
-      <body className='p-4 m-4 w-full flex flex-col items-center'>
+      <body className='p-0 m-0 w-full flex flex-col items-center'>
         <section className='max-w-2xl w-full'>
-          <header>
+          <header className='p-5'>
             <a href='/'>
               <img src='/bob.jpg' className='float-right inline rounded-full h-8 w-8' />
             </a>

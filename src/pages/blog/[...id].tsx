@@ -25,7 +25,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
 
 export default function Page({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <section className='markdown-body'>
+    <section className='markdown-body m-0 px-5'>
       <h1 className='font-bold border-b-0 mb-0 pb-0 text-4xl'>{post.title}</h1>
       <sub>{post.date}</sub>
       <article className='pt-10' dangerouslySetInnerHTML={{ __html: post.html }}></article>
