@@ -15,7 +15,7 @@ export default function Index({ posts }: InferGetStaticPropsType<typeof getStati
         <li key={post.id} className='my-12'>
           <a
             href={`/blog/${post.id}/${slugify(post.title)}`}
-            className='font-bold text-3xl border-b-0 mb-0 pb-0 text-black'
+            className='font-bold text-3xl border-b-0 mb-0 pb-0 underline text-black'
           >
             {post.title}
             <br />
