@@ -32,7 +32,15 @@ type GitHubIssue = {
     type: string;
     site_admin: boolean;
   };
-  labels: string[];
+  labels: {
+    id: number;
+    node_id: string;
+    url: string;
+    name: string;
+    color: string;
+    default: boolean;
+    description: string;
+  }[];
   state: string;
   locked: boolean;
   assignee: null;
@@ -83,22 +91,24 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
   const issues = (await res.json()) as unknown as GitHubIssue[];
 
-  return issues.map((issue) => {
-    const parsed = frontMatter(issue.body, { delimiters: ['<!--', '-->'] });
+  return issues
+    .filter((issue) => !issue.labels.map((label) => label.name).includes('draft'))
+    .map((issue) => {
+      const parsed = frontMatter(issue.body, { delimiters: ['<!--', '-->'] });
 
-    const $ = load(issue.body_html);
-    $('a').each((_, el) => {
-      if ($(el).attr('href')?.startsWith('http')) {
-        $(el).attr('target', '_blank');
-      }
+      const $ = load(issue.body_html);
+      $('a').each((_, el) => {
+        if ($(el).attr('href')?.startsWith('http')) {
+          $(el).attr('target', '_blank');
+        }
+      });
+
+      return {
+        id: issue.id,
+        title: issue.title,
+        desc: parsed.data.description,
+        html: $.html(),
+        date: parsed.data.date,
+      };
     });
-
-    return {
-      id: issue.id,
-      title: issue.title,
-      desc: parsed.data.description,
-      html: $.html(),
-      date: parsed.data.date,
-    };
-  });
 }
