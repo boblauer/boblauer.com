@@ -92,11 +92,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   const issues = (await res.json()) as unknown as GitHubIssue[];
 
   return issues
-    .filter(
-      (issue) =>
-        issue.labels.map((label) => label.name).includes('publish') ||
-        (process.env.SHOW_DEV_ISSUES && issue.labels.map((l) => l.name).includes('dev'))
-    )
+    .filter((issue) => process.env.SHOW_DEV_ISSUES || issue.labels.map((label) => label.name).includes('publish'))
     .map((issue) => {
       const parsed = frontMatter(issue.body, { delimiters: ['<!--', '-->'] });
 
