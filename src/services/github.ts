@@ -80,9 +80,6 @@ type BlogPost = {
 };
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-
-  console.log("token", process.env.GH_API_TOKEN?.slice(0, 20))
-
   const res = await fetch(`https://api.github.com/repos/boblauer/boblauer.com/issues`, {
     cache: 'force-cache',
     headers: {
